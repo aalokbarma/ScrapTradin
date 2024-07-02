@@ -50,6 +50,7 @@ const LoginForm = ({navigation}: any) => {
                 <TextInput
                     style={Styles.input1}
                     placeholder="Enter your password"
+                    placeholderTextColor={Colors.placeholder1}
                     secureTextEntry={secureTextEntry}
                     value={password}
                     onChangeText={setPassword}

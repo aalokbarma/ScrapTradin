@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Styles from './styles';
+import Colors from '../../constants/Colors';
 
-const OTPInputForm = ({navigation}: any) => {
+const OTPInputForm = ({navigation, onSubmit}: any) => {
   const [otp, setOtp] = useState(['', '', '', '']);
   const inputs = useRef([]);
 
@@ -41,6 +42,7 @@ const OTPInputForm = ({navigation}: any) => {
               ref={(input) => (inputs.current[index] = input)}
               style={Styles.otpInput}
               keyboardType="numeric"
+              placeholderTextColor={Colors.placeholder1}
               maxLength={1}
               value={digit}
               onChangeText={(text) => handleChange(text, index)}
@@ -59,7 +61,7 @@ const OTPInputForm = ({navigation}: any) => {
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" delay={200} style={Styles.inputContainer}>
-        <TouchableOpacity style={Styles.button} onPress={handleSubmit}>
+        <TouchableOpacity style={Styles.button} onPress={onSubmit}>
           <Text style={Styles.buttonText}>Submit</Text>
         </TouchableOpacity>
       </Animatable.View>

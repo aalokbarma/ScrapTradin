@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const HomeScreen = () => {
   return (
-    <View style= {{backgroundColor: 'red'}}>
+    <View style= {Styles.homeScreen}>
       <Text>HomeScreen</Text>
       <AntDesign name="stepforward" size={60} color="blue" />
     </View>

@@ -11,7 +11,7 @@ const Styles = StyleSheet.create({
     
       },
       inputContainer: {
-        marginBottom: 10
+        marginBottom: 20
       },
       label: {
         fontSize: 16,
@@ -55,9 +55,6 @@ const Styles = StyleSheet.create({
         fontWeight: '700',
         paddingBottom: 10,
       },
-      signUpButtonContainer: {
-        marginTop: 20,
-      },
       scrollView: {
         marginHorizontal: Dimensions.get('window').width * 0.05,
       },
@@ -84,38 +81,6 @@ const Styles = StyleSheet.create({
         color: Colors.minorText,
         fontWeight: '600',
         textDecorationLine: 'underline'
-      },
-      forgetButtonContainer: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        marginTop: 5,
-      },
-      forgetPasswordText: {
-        fontSize: 14,
-        color: Colors.buttonPrimary,
-        fontWeight: '500',
-      },
-      passwordContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: Colors.buttonPrimary,
-        borderRadius: 5,
-        paddingRight: 10,
-        backgroundColor: Colors.background,
-      },
-      icon: {
-        marginLeft: 10
-      },
-      input1: {
-        flex: 1,
-        backgroundColor: Colors.background,
-        color: Colors.majorText,
-        paddingHorizontal: 10,
-        borderRadius: 15,
       },
 });
 

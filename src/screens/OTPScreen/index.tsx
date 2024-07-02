@@ -5,6 +5,11 @@ import logo from '../../assets/ScrapFinding.png';
 import OTPInputForm from '../../components/OTPInputForm';
 
 const OTPScreen = ({navigation}: any) => {
+
+  const onSubmit = () => {
+    navigation.navigate("SetPassword")
+  }
+
   return (
     <View style = {Styles.otpScreen}>
       <View style = {Styles.topImageContainer}>
@@ -13,7 +18,7 @@ const OTPScreen = ({navigation}: any) => {
           style = {Styles.logoImage}
         />
       </View>
-      <OTPInputForm navigation = {navigation} />
+      <OTPInputForm navigation = {navigation} onSubmit = {onSubmit} />
     </View>
   )
 }

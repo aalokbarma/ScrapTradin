@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
@@ -11,7 +12,7 @@ import WelcomeScreenFive from '../screens/WelcomeScreenFive';
 import WelcomeScreenSix from '../screens/WelcomeScreenSix';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ActivityIndicator, Dimensions, View } from 'react-native';
+import { ActivityIndicator, Dimensions, StyleSheet, View } from 'react-native';
 import Colors from '../constants/Colors';
 import LoginScreen from '../screens/LoginScreen';
 import SignupScreen from '../screens/SignupScreen';
@@ -22,6 +23,12 @@ import AboutUsScreen from '../screens/AboutUsScreen';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
 import TermsConditionScreen from '../screens/TermsConditionScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
+
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 
 const Stack = createStackNavigator();
 
@@ -49,6 +56,64 @@ const Navigation = () => {
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
 
+  const Tab = createBottomTabNavigator();
+
+  const HomeBottomNavigator = () => {
+    return (
+      <Tab.Navigator>
+        <Tab.Group 
+          screenOptions={({route}) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+  
+              if (route.name === 'Home') {
+                return <AntDesign name="home" size={size} color={color} /> 
+                // iconName = focused ? 'home' : 'home-outline';
+              } else if (route.name === 'Rates') {
+                return <MaterialIcons name="currency-exchange" size={size} color={color} />
+              } else if (route.name === 'Schedule') {
+                return <MaterialIcons name="schedule" size={size} color={color} />
+              } else if (route.name === 'Pickup') {
+                return <FontAwesome6 name="truck-pickup" size={size} color={color} />
+              } else if (route.name === 'Profile') {
+                return <FontAwesome name="user-circle-o" size={size} color={color} />
+              }
+  
+              // You can return any component that you like here!
+              // return <Icon name={iconName} size={size} color={color} />;
+            },
+            tabBarLabelStyle: styles.tabBarLabelStyle,
+            tabBarStyle: styles.tabBarStyle,
+            tabBarActiveTintColor: Colors.Color5,
+            tabBarInactiveTintColor: Colors.majorText,
+            headerShown: false,
+          })}
+          >
+          <Tab.Screen 
+            name="Home" 
+            component={HomeScreen} 
+          />
+          <Tab.Screen 
+            name="Rates" 
+            component={WelcomeScreenOne} 
+          />
+          <Tab.Screen 
+            name="Schedule" 
+            component={WelcomeScreenTwo} 
+          />
+          <Tab.Screen 
+            name="Pickup" 
+            component={WelcomeScreenThree} 
+          />
+          <Tab.Screen 
+            name="Profile" 
+            component={WelcomeScreenFour} 
+          />
+        </Tab.Group>
+      </Tab.Navigator>
+    );
+  }
+
   return (
     <NavigationContainer>
       {
@@ -62,6 +127,7 @@ const Navigation = () => {
               {
                 welcomeStatus == "skipped" || welcomeStatus == "proceeded" ? 
                 <>
+                <Stack.Screen name="Home" component={HomeBottomNavigator} />
                 <Stack.Screen name="Signup" component={SignupScreen} />
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="ForgetPassoword" component={ForgetPasswordScreen} />
@@ -84,7 +150,7 @@ const Navigation = () => {
                 </>
               }
               {
-                welcomeStatus == "login" && <Stack.Screen name="Home" component={HomeScreen} />
+                welcomeStatus == "login" && <Stack.Screen name="Home" component={HomeBottomNavigator} />
               }
             </Stack.Group>
         </Stack.Navigator>
@@ -92,5 +158,26 @@ const Navigation = () => {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  tabBarLabelStyle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  tabBarStyle: {
+    backgroundColor: '#f8f8f8',
+    borderTopWidth: 0,
+    elevation: 10, // for Android shadow
+    shadowOffset: { width: 0, height: -1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+  },
+});
 
 export default Navigation;
