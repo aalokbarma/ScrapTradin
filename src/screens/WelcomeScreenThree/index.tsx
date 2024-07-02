@@ -54,7 +54,7 @@ const WelcomeScreenThree = ({navigation}: any) => {
 
   const onSkipPress = () => {
     storeData('skipped')
-    navigation.navigate("Home")
+    navigation.navigate("Signup")
   };
   return (
     <View style={Styles.container}>

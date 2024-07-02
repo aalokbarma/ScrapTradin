@@ -53,7 +53,7 @@ const WelcomeScreenFour = ({navigation}: any) => {
 
   const onSkipPress = () => {
     storeData('skipped')
-    navigation.navigate("Home")
+    navigation.navigate("Signup")
   };
 
 

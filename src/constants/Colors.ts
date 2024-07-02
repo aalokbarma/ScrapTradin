@@ -33,7 +33,7 @@ export default {
 
     background: "#fffcfb",
 
-    placeholder1: "#9095A0FF",
+    placeholder1: "#2e629360",
 
     buttonPrimary: "#2e6293",
 

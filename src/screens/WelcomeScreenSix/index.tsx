@@ -48,12 +48,12 @@ const WelcomeScreenSix = ({navigation}: any) => {
 
   const onNextPress = () => {
     storeData("proceeded")
-    navigation.navigate("Home")
+    navigation.navigate("Signup")
   };
 
   const onSkipPress = () => {
     storeData('skipped')
-    navigation.navigate("Home")
+    navigation.navigate("Signup")
   };
 
   
