@@ -1,8 +1,6 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Styles from './styles';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Colors from '../../constants/Colors';
 import Header from '../../common/Header';
 
 const PrivacyPolicyScreen = ({navigation}: any) => {

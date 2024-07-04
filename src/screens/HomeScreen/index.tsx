@@ -1,13 +1,32 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import React from 'react';
 import Styles from './styles';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import logo from '../../assets/ScrapFinding.png';
+import paymentImage from '../WelcomeScreenOne/Assets/ConvenientTransaction.png';
+import { Image } from 'react-native';
 
 const HomeScreen = () => {
   return (
     <View style= {Styles.homeScreen}>
-      <Text>HomeScreen</Text>
-      <AntDesign name="stepforward" size={60} color="blue" />
+      <View style = {Styles.topImageContainer}>
+        <Image 
+          source={logo}
+          style = {Styles.logoImage}
+        />
+      </View>
+      <ImageBackground 
+        source={paymentImage}
+        style = {Styles.mainContentContainer}
+      >
+        <Text style = {Styles.headingtext}>Collection by ScrapTradin</Text>
+        <Text style = {Styles.majorText}>1,443,515 kg</Text>
+        <Text style = {Styles.minorText}>Collected</Text>
+      </ImageBackground>
+      <View style = {Styles.pickupButtonContainer}>
+        <TouchableOpacity style = {Styles.pickupButton}>
+          <Text style = {Styles.pickupText}>Schedule a Pickup</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }

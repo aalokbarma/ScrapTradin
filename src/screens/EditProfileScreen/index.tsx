@@ -2,12 +2,12 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import Styles from './styles';
 
-const PickupScreen = () => {
+const EditProfileScreen = () => {
   return (
     <View>
-      <Text>PickupScreen</Text>
+      <Text>EditProfileScreen</Text>
     </View>
   )
 }
 
-export default PickupScreen;
+export default EditProfileScreen;

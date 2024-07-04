@@ -13,6 +13,7 @@ export default {
     green: "#0f0",
     blue: "#00f",
     purple: "#A020F0",
+    orange: "#ffA500",
     
     fullWhite: "#FFFFFF",
     fullBlack: "#000000",

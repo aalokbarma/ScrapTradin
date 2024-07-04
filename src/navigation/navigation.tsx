@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
@@ -23,14 +24,24 @@ import AboutUsScreen from '../screens/AboutUsScreen';
 import PrivacyPolicyScreen from '../screens/PrivacyPolicyScreen';
 import TermsConditionScreen from '../screens/TermsConditionScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
+import RatesScreen from '../screens/RatesScreen';
+import ScheduleScreen from '../screens/ScheduleScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import UpcomingPickupScreen from '../screens/UpcomingPickupScreen';
+import CompletedPickupScreen from '../screens/CompletedPickupScreen';
+import MyAddressesScreen from '../screens/MyAddressesScreen';
+import EditProfileScreen from '../screens/EditProfileScreen';
+
 
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
 
 const Navigation = () => {
 
@@ -56,7 +67,36 @@ const Navigation = () => {
   const screenWidth = Dimensions.get('window').width;
   const screenHeight = Dimensions.get('window').height;
 
-  const Tab = createBottomTabNavigator();
+  const PickupTabsNavigator = () => {
+    return(
+      <TopTab.Navigator
+        screenOptions={{
+          tabBarLabelStyle: styles.topTabBarLabelStyle,
+          tabBarStyle: styles.topTabBarStyle,
+          tabBarIndicatorStyle: styles.topTabBarIndicatorStyle,
+          tabBarActiveTintColor: Colors.Color6,
+          tabBarInactiveTintColor: Colors.majorText,
+      }}
+      >
+        <TopTab.Screen name="UpcomingPickup" component={UpcomingPickupScreen} options={{title: "Upcoming"}}/>
+        <TopTab.Screen name="CompletedPickup" component={CompletedPickupScreen} options={{title: "Completed"}} />
+      </TopTab.Navigator>
+    )
+  };
+
+  const ProfileStack = () => {
+    return(
+      <Stack.Navigator>
+            <Stack.Group screenOptions={{headerShown: false}}>
+                <Stack.Screen name="Profile" component={ProfileScreen} />
+                <Stack.Screen name="AboutUs" component={AboutUsScreen} />
+                <Stack.Screen name="MyAddresses" component={MyAddressesScreen} />
+                <Stack.Screen name="EditProfile" component={EditProfileScreen} />
+            </Stack.Group>
+        </Stack.Navigator>
+    )
+  }
+
 
   const HomeBottomNavigator = () => {
     return (
@@ -95,19 +135,19 @@ const Navigation = () => {
           />
           <Tab.Screen 
             name="Rates" 
-            component={WelcomeScreenOne} 
+            component={RatesScreen} 
           />
           <Tab.Screen 
             name="Schedule" 
-            component={WelcomeScreenTwo} 
+            component={ScheduleScreen} 
           />
           <Tab.Screen 
             name="Pickup" 
-            component={WelcomeScreenThree} 
+            component={PickupTabsNavigator} 
           />
           <Tab.Screen 
             name="Profile" 
-            component={WelcomeScreenFour} 
+            component={ProfileStack} 
           />
         </Tab.Group>
       </Tab.Navigator>
@@ -177,6 +217,19 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: -1 },
     shadowOpacity: 0.1,
     shadowRadius: 10,
+  },
+  topTabBarLabelStyle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    textTransform: 'none', // to keep the label text as it is (not uppercase)
+  },
+  topTabBarStyle: {
+    backgroundColor: '#f8f8f8',
+  },
+  topTabBarIndicatorStyle: {
+    backgroundColor: Colors.Color6,
+    height: 4, // height of the indicator line
+    borderRadius: 5,
   },
 });
 
