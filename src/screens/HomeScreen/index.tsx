@@ -5,7 +5,12 @@ import logo from '../../assets/ScrapFinding.png';
 import paymentImage from '../WelcomeScreenOne/Assets/ConvenientTransaction.png';
 import { Image } from 'react-native';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
+
+  const onSchedulePress = () => {
+    navigation.navigate("Schedule");
+  };
+
   return (
     <View style= {Styles.homeScreen}>
       <View style = {Styles.topImageContainer}>
@@ -23,7 +28,7 @@ const HomeScreen = () => {
         <Text style = {Styles.minorText}>Collected</Text>
       </ImageBackground>
       <View style = {Styles.pickupButtonContainer}>
-        <TouchableOpacity style = {Styles.pickupButton}>
+        <TouchableOpacity style = {Styles.pickupButton} onPress={onSchedulePress}>
           <Text style = {Styles.pickupText}>Schedule a Pickup</Text>
         </TouchableOpacity>
       </View>

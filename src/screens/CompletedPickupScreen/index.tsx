@@ -20,6 +20,7 @@ const CompletedPickupScreen = () => {
           pickupAddress: "Nutan Gram, Morepukur, Rishra",
           pickupStatus: "Success",
           paymentStatus: "Success",
+          paymentValue: "₹ 54,000/-"
         },
       {
           id: 2,
@@ -32,6 +33,7 @@ const CompletedPickupScreen = () => {
           pickupAddress: "Nutan Gram, Morepukur, Rishra",
           pickupStatus: "Success",
           paymentStatus: "Success",
+          paymentValue: "₹ 36,000/-"
         },
   ]);
 

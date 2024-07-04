@@ -23,7 +23,7 @@ const PickupComponent = (props: any) => {
                 </View>
                 <View style = {Styles.contentContainer}>
                     <View style = {Styles.contentRowContainer}>
-                        <Text style = {Styles.contentKey}>Estimated Weight: </Text>
+                        <Text style = {Styles.contentKey}>{ item.pickupStatus == "Pending" ? "Estimated Weight: " : "Total Weight: "} </Text>
                         <Text style = {Styles.contentValue}>{item.weight}</Text>
                     </View>
                     <View style = {Styles.contentRowContainer}>
@@ -37,6 +37,10 @@ const PickupComponent = (props: any) => {
                     <View style = {Styles.contentRowContainer}>
                         <Text style = {Styles.contentKey}>Pickup status: </Text>
                         <Text style = {[Styles.statusText, item.pickupStatus == "Pending" ? {color: Colors.orange} : {color: Colors.greenButton}]}>{item.pickupStatus}</Text>
+                    </View>
+                    <View style = {Styles.contentRowContainer}>
+                        <Text style = {Styles.contentKey}>Payment value: </Text>
+                        <Text style = {Styles.contentValue}>{item.paymentValue}</Text>
                     </View>
                     <View style = {Styles.contentRowContainer}>
                         <Text style = {Styles.contentKey}>Payment status: </Text>

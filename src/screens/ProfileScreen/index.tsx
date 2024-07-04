@@ -10,6 +10,16 @@ import Colors from '../../constants/Colors';
 
 const ProfileScreen = ({navigation}: any) => {
   
+  const onLogout = () => {
+    Alert.alert('Success!', 'Logged out successfully', [
+        {
+          text: 'OK',
+          onPress: () => navigation.navigate("Login"),
+          style: 'cancel',
+        },
+      ]);
+  };
+  
   const navigatorOptions = [
     {
       id: 1,
@@ -32,13 +42,12 @@ const ProfileScreen = ({navigation}: any) => {
     {
       id: 4,
       title: "Log Out",
-      onItemPress: () => Alert.alert("You're logged out!"),
+      onItemPress: () => onLogout(),
       icon: () => <MaterialCommunityIcons name="logout" size={30} color={Colors.redButton} />
     },
   ]
 
   const NavigatorComponent = ({item}: any) => {
-    console.warn(item)
     return(
       <TouchableOpacity style = {Styles.navigatorComponentsContainer} onPress={item.onItemPress}>
         <View style = {Styles.leftContainer}>

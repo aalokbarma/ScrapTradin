@@ -61,7 +61,6 @@ const Navigation = () => {
 
   useEffect(() =>{
     getData();
-    console.warn("WelcomeStatus => " + welcomeStatus)
   }, [welcomeStatus]);
 
   const screenWidth = Dimensions.get('window').width;
@@ -162,11 +161,12 @@ const Navigation = () => {
           <ActivityIndicator color={Colors.Color6} size={70} />
         </View>
         :
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName={
+          welcomeStatus == "skipped" || welcomeStatus == "proceeded" 
+          ? "Signup"
+          : "WelcomeOne"
+        }>
             <Stack.Group screenOptions={{headerShown: false}}>
-              {
-                welcomeStatus == "skipped" || welcomeStatus == "proceeded" ? 
-                <>
                 <Stack.Screen name="Home" component={HomeBottomNavigator} />
                 <Stack.Screen name="Signup" component={SignupScreen} />
                 <Stack.Screen name="Login" component={LoginScreen} />
@@ -177,21 +177,12 @@ const Navigation = () => {
                 <Stack.Screen name="Privacy" component={PrivacyPolicyScreen} />
                 <Stack.Screen name="Terms" component={TermsConditionScreen} />
                 <Stack.Screen name="Reset" component={ResetPasswordScreen} />
-                </>
-                :
-                <>
                 <Stack.Screen name="WelcomeOne" component={WelcomeScreenOne} />
                 <Stack.Screen name="WelcomeTwo" component={WelcomeScreenTwo} />
                 <Stack.Screen name="WelcomeThree" component={WelcomeScreenThree} />
                 <Stack.Screen name="WelcomeFour" component={WelcomeScreenFour} />
                 <Stack.Screen name="WelcomeFive" component={WelcomeScreenFive} />
                 <Stack.Screen name="WelcomeSix" component={WelcomeScreenSix} />
-                <Stack.Screen name="Signup" component={SignupScreen} />
-                </>
-              }
-              {
-                welcomeStatus == "login" && <Stack.Screen name="Home" component={HomeBottomNavigator} />
-              }
             </Stack.Group>
         </Stack.Navigator>
       }
